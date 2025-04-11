@@ -3,6 +3,8 @@ import { BiBuoy } from "react-icons/bi";
 import { HiArrowSmRight, HiChartPie, HiInbox, HiOutlineCloudUpload, HiShoppingBag, HiTable, HiUser, HiViewBoards } from "react-icons/hi";import favicon from "../assets/favicon.png";
 import { useContext } from "react";
 import { AuthContext } from "../contexts/Authprovidor";
+import { Link } from "react-router-dom";
+
 
 
 const SideBar = () => {
@@ -22,11 +24,11 @@ const SideBar = () => {
         <Sidebar.Item href="/admin/dashboard" icon={HiChartPie}>
           Dashboard
         </Sidebar.Item>
-        <Sidebar.Item href="/admin/dashboard/upload" icon={HiOutlineCloudUpload}>
-          Upload Books
-        </Sidebar.Item>
-        <Sidebar.Item href="/admin/dashboard/manage" icon={HiInbox}>
-          Manage Books
+        <Sidebar.Item icon={HiOutlineCloudUpload}>
+        <Link to="/admin/dashboard/upload">Upload Books</Link>
+         </Sidebar.Item>
+        <Sidebar.Item  icon={HiInbox}>
+        <Link to="/admin/dashboard/manage"> Manage Books</Link>
         </Sidebar.Item>
         <Sidebar.Item href="#" icon={HiUser}>
           Users
