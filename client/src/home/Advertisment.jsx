@@ -16,7 +16,7 @@ import { EffectFade, Navigation, Pagination } from 'swiper/modules';
 const Advertisment = () => {
   return (
     <div>
-         <Swiper
+      <Swiper
         spaceBetween={30}
         effect={'fade'}
         navigation={true}
@@ -27,20 +27,21 @@ const Advertisment = () => {
         className="mySwiper"
       >
         <SwiperSlide>
-          <img src="src/assets/nature-1.jpg" />
+          <img src="/images/img/nature-1.jpg" />
         </SwiperSlide>
         <SwiperSlide>
-          <img src="src/assets/nature-2.jpg" />
+          <img src="/images/img/nature-2.jpg" />
         </SwiperSlide>
         <SwiperSlide>
-          <img src="src/assets/nature-3.jpg" />
+          <img src="/images/img/nature-3.jpg" />
         </SwiperSlide>
         <SwiperSlide>
-          <img src="src/assets/nature-4.jpg" />
+          <img src="/images/img/nature-4.jpg" />
         </SwiperSlide>
       </Swiper>
     </div>
-  )
-}
+  );
+};
+
 
 export default Advertisment
