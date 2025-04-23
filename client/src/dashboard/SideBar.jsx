@@ -24,12 +24,12 @@ const SideBar = () => {
         <Sidebar.Item href="/admin/dashboard" icon={HiChartPie}>
           Dashboard
         </Sidebar.Item>
-        <Sidebar.Item icon={HiOutlineCloudUpload}>
-        <Link to="/admin/dashboard/upload">Upload Books</Link>
+        <Sidebar.Item as={Link} to="/admin/dashboard/upload" icon={HiOutlineCloudUpload}>
+          Upload
          </Sidebar.Item>
-        <Sidebar.Item  icon={HiInbox}>
-        <Link to="/admin/dashboard/manage"> Manage Books</Link>
-        </Sidebar.Item>
+         <Sidebar.Item as={Link} to="/admin/dashboard/manage" icon={HiOutlineCloudUpload}>
+         Manage Books
+         </Sidebar.Item>
         <Sidebar.Item href="#" icon={HiUser}>
           Users
         </Sidebar.Item>

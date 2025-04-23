@@ -14,8 +14,8 @@ const Shop = () => {
   }, []);
 
   return (
-    <div className="mt-24 px-4 lg:px-24 bg-teal-100 gap-4">
-      <h2 className="text-5xl font-bold text-center">All Books Are Here</h2>
+    <div className="px-4 lg:px-24 bg-teal-100 gap-5 mt-24">
+      <h2 className="text-5xl font-bold text-center ">All Books Are Here</h2>
       <div className="grid gap-8 my-12 lg:grid-cols-4 sm:grid-cols-2 md:grid-cols-3 grid-cols-1">
         {Books.map((book) => (
           <Card key={book._id}>

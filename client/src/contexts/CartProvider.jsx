@@ -24,9 +24,15 @@ const CartProvider = ({ children }) => {
     setCart([]);
   };
 
-  const placeOrder = (order) => {
-    setOrders((prevOrders) => [...prevOrders, order]);
-    setCart([]); 
+  const placeOrder = (items) => {
+    const newOrder = {
+      id: Date.now().toString(), 
+      items,
+      createdAt: new Date().toISOString(),
+    };
+    setOrders((prevOrders) => [...prevOrders, newOrder]);
+    setCart([]);
+    return newOrder; 
   };
 
   return (

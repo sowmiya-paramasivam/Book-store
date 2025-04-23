@@ -34,7 +34,7 @@ const Wishlist = () => {
 
                 <h3 className="mt-3 text-lg font-semibold text-gray-900">{book.bookTitle}</h3>
                 <p className="text-gray-600">{book.authorName}</p>
-                <p className="text-blue-700 font-semibold mt-2">${book.price}</p>
+                <p className="text-blue-700 font-semibold mt-2">{book.price}</p>
 
                 <div className="flex justify-between items-center mt-4">
                   <Link

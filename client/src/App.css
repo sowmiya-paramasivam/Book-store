@@ -1,7 +1,8 @@
 header, nav {
     z-index: 10000 !important;
-}
-
-.dashboard-card {
+  }
+  
+  .dashboard-card {
     @apply p-6 rounded-lg shadow-md text-center flex flex-col items-center justify-center hover:scale-105 transition;
   }
+  

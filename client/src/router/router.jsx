@@ -20,6 +20,8 @@ import UploadBook from "../dashboard/UploadBook";
 import ManageBook from "../dashboard/ManageBook";
 import EditBooks from "../dashboard/EditBooks";
 import Wishlist from "../shop/Wishlist";
+import AddCarts from "../shop/AddCarts";
+import SearchResult from "../home/SearchResult";
 
 
   const router = createBrowserRouter([
@@ -55,12 +57,22 @@ import Wishlist from "../shop/Wishlist";
         },
         {
           path:"/orders",
-          element:<Orders/>,
+          element:<Orders/>
         },
         {
           path:"/wishlist",
           element:<Wishlist/>
-        }
+        },
+        {
+          path:"/addcart",
+          element:<AddCarts/>
+        },
+        {
+          path: "/search/:keyword",
+          element: <SearchResult />,
+          loader: ({ params }) =>
+            fetch(`http://localhost:5000/search-books?search=${params.keyword}`)
+        }        
       ]
     },
     {

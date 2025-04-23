@@ -1,0 +1,52 @@
+import React, { useContext } from "react";
+import { CartContext } from "../contexts/CartProvider";
+import { Link } from "react-router-dom";
+
+const AddCarts = () => {
+  const { cart, removeFromCart } = useContext(CartContext);
+
+  return (
+    <div className="px-4 py-20 min-h-screen bg-gray-50">
+      <div className="max-w-6xl mx-auto">
+        <h2 className="text-3xl font-bold text-center text-blue-800 mb-10">Your Cart</h2>
+
+        {cart.length === 0 ? (
+          <div className="text-center text-gray-500 text-lg">Your cart is empty.</div>
+        ) : (
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
+            {cart.map((book, index) => (
+              <div
+                key={index}
+                className="bg-white rounded-lg shadow-sm p-3 flex flex-col items-center transition-transform hover:scale-105 duration-300"
+              >
+                <img
+                  src={book.imageURL}
+                  alt={book.title}
+                  className="w-32 h-40 object-cover rounded-md mb-3"
+                />
+                <h3 className="text-md font-semibold text-blue-700 text-center">{book.bookTitle}</h3>
+                <p className="text-sm text-gray-600">by {book.authorName}</p>
+                <p className="text-blue-500 font-semibold mt-1">{book.price}</p>
+                <div className="flex justify-between gap-2 mt-4">
+                  <button
+                    onClick={() => removeFromCart(book._id)}
+                    className="text-sm bg-red-500 text-white px-3 py-1 rounded hover:bg-red-600 transition"
+                  >
+                    Remove
+                  </button>
+                  <Link to={`/order/${book._id}`}>
+                    <button className="text-sm bg-blue-600 text-white px-3 py-1 rounded hover:bg-blue-700 transition">
+                      Buy Now
+                    </button>
+                  </Link>
+                </div>
+              </div>
+            ))}
+          </div>
+        )}
+      </div>
+    </div>
+  );
+};
+
+export default AddCarts;
