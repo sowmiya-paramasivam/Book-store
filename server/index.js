@@ -6,7 +6,10 @@ require('dotenv').config();
 
 
 // middleware
-app.use(cors())
+app.use(cors({
+  origin: 'https://book-store-frontend-yf1f.onrender.com',
+  credentials: true
+}));
 app.use(express.json())
 
 
