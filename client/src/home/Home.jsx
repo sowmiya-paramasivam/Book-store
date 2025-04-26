@@ -6,6 +6,7 @@ import PromoBanner from './PromoBanner';
 import OtherBooks from './OtherBooks';
 import Review from './Review';
 import Advertisment from './Advertisment';
+import Banner1 from './Banner1';
 
 
 
@@ -15,6 +16,7 @@ const Home = () => {
    <Banner/>
    <Advertisment/>
    <BestSellerBook/>
+   <Banner1/>
    <FavouriteBook/>
    <PromoBanner/>
    <OtherBooks/>
