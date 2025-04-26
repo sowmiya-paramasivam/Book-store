@@ -3,6 +3,8 @@ const app = express()
 const port = process.env.PORT || 5000;
 const cors = require('cors');
 require('dotenv').config();
+const jwt = require('jsonwebtoken');
+
 
 
 // middleware
@@ -143,6 +145,30 @@ async function run() {
       }
       const result = await bookcollection.find({ email }).toArray();
       res.send(result);
+    });
+    // login
+    app.post('/login', async (req, res) => {
+      const { email, password } = req.body;
+    
+      // TODO: Validate user email & password from database (for now we skip)
+      
+      // Create JWT token
+      const token = jwt.sign({ email }, process.env.JWT_SECRET, { expiresIn: '1h' });
+
+      res.cookie('token', token, {
+        httpOnly: true, 
+        secure: process.env.NODE_ENV === 'production', 
+        sameSite: 'Lax'
+      });
+
+      // Set it in cookie
+      res.cookie('token', token, {
+        httpOnly: true,
+        secure: true,
+        sameSite: 'Lax'
+      });
+    
+      res.json({ success: true, message: 'Login successful', token });
     });
 
  // Send a ping to confirm a successful connection
