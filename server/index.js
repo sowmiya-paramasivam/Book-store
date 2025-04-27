@@ -109,7 +109,7 @@ async function run() {
 
       let query = {};
       if (search) {
-        const searchRegex = new RegExp(search, 'i'); 
+        const searchRegex = new RegExp(search, 'i');
         query = {
           $or: [
             { bookTitle: searchRegex },
@@ -149,29 +149,23 @@ async function run() {
     // login
     app.post('/login', async (req, res) => {
       const { email, password } = req.body;
-    
+
       // TODO: Validate user email & password from database (for now we skip)
-      
+
       // Create JWT token
       const token = jwt.sign({ email }, process.env.JWT_SECRET, { expiresIn: '1h' });
 
-      res.cookie('token', token, {
-        httpOnly: true, 
-        secure: process.env.NODE_ENV === 'production', 
-        sameSite: 'Lax'
-      });
-
-      // Set it in cookie
+      // Set the token in cookies
       res.cookie('token', token, {
         httpOnly: true,
-        secure: true,
-        sameSite: 'Lax'
+        secure: process.env.NODE_ENV === 'production', // `secure` flag only true in production (requires HTTPS)
+        sameSite: 'None', // 'None' to allow cross-origin requests, important for third-party cookies
       });
-    
+
       res.json({ success: true, message: 'Login successful', token });
     });
 
- // Send a ping to confirm a successful connection
+    // Send a ping to confirm a successful connection
     await client.db("admin").command({ ping: 1 });
     console.log("Pinged your deployment. You successfully connected to MongoDB!");
   } finally {
