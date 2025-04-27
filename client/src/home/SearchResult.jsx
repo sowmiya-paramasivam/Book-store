@@ -6,7 +6,7 @@ const SearchResult = () => {
   const [books, setBooks] = useState([]);
 
   useEffect(() => {
-    fetch(`http://localhost:5000/search-books?search=${keyword}`)
+    fetch(`${import.meta.env.VITE_API_BASE_URL}/search-books?search=${keyword}`)
       .then(res => res.json())
       .then(data => setBooks(data));
   }, [keyword]);
