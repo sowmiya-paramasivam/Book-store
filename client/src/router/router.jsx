@@ -48,12 +48,12 @@ import SearchResult from "../home/SearchResult";
         {
             path:"/books/:id",
             element:<Singlebook/>,
-            loader:({params}) => fetch(`http://localhost:5000/books/${params.id}`)
+            loader:({params}) => fetch(`${import.meta.env.VITE_API_BASE_URL}/books/${params.id}`)
         },
         {
           path:"/order/:id",
           element:<OrderPage/>,
-          loader:({params}) => fetch(`http://localhost:5000/books/${params.id}`)
+          loader:({params}) => fetch(`${import.meta.env.VITE_API_BASE_URL}/books/${params.id}`)
         },
         {
           path:"/orders",
@@ -71,7 +71,7 @@ import SearchResult from "../home/SearchResult";
           path: "/search/:keyword",
           element: <SearchResult />,
           loader: ({ params }) =>
-            fetch(`http://localhost:5000/search-books?search=${params.keyword}`)
+            fetch(`${import.meta.env.VITE_API_BASE_URL}/search-books?search=${params.keyword}`)
         }        
       ]
     },
@@ -95,7 +95,7 @@ import SearchResult from "../home/SearchResult";
           path: "/admin/dashboard/edit-books/:id",
            element: <EditBooks />,
           loader: ({ params }) =>
-            fetch(`http://localhost:5000/books/${params.id}`),
+            fetch(`${import.meta.env.VITE_API_BASE_URL}/books/${params.id}`),
         },
       ],
     },
