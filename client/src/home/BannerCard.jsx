@@ -9,7 +9,7 @@ import 'swiper/css/effect-cards';
 import './BannerCard.css';
 
 // import required modules
-import { EffectCards } from 'swiper/modules';
+import { EffectCards, Autoplay } from 'swiper/modules';
 
 
 const BannerCard = () => {
@@ -18,7 +18,11 @@ const BannerCard = () => {
       <Swiper
         effect={'cards'}
         grabCursor={true}
-        modules={[EffectCards]}
+        autoplay={{
+          delay: 1500,
+          disableOnInteraction: false,
+        }}
+        modules={[EffectCards,Autoplay]}
         className="mySwiper"
       >
         <SwiperSlide></SwiperSlide>

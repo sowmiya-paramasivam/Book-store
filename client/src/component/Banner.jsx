@@ -15,7 +15,7 @@ const Banner = () => {
   return (
     <div className='px-4 lg:px-24 bg-teal-100 flex items-center overflow-hidden'>
       <div className='flex w-full flex-col md:flex-row justify-between items-center gap-12 py-40'>
-   {/* Left side with animation */}
+   {/* Left side  */}
         <div className='md:w-1/2 space-y-7 h-full transform transition duration-1000 ease-in-out hover:scale-[1.02]'>
           <h1 className='animate-typing text-5xl font-bold leading-snug text-black transition-opacity duration-1000 opacity-0 animate-fade-in-down'>
             Buy and Sell Your Books <span className='text-blue-700'>for the Best Prices</span>
@@ -44,8 +44,8 @@ const Banner = () => {
           </div>
         </div>
 
-        {/* Right side with subtle entrance animation */}
-        <div className='animate-fade-in-right delay-700'>
+        {/* Right side */}
+        <div className='animate-fade-in-right delay-700 mr-25 md:mr-9'>
           <BannerCard />
         </div>
       </div>
