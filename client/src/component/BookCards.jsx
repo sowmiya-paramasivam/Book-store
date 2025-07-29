@@ -10,7 +10,7 @@ import { CartContext } from '../contexts/CartProvider';
 
 const BookCards = ({ headline, Books }) => {
   const { wishlist, toggleWishlist } = useContext(WishlistContext);
-  const { addToCart } = useContext(CartContext);
+  const { addToCart, cart, increment, decrement } = useContext(CartContext);
 
   return (
     <div className="my-16 px-4 lg:px-24">
@@ -62,25 +62,54 @@ const BookCards = ({ headline, Books }) => {
                     title="Add to Wishlist"
                   >
                     <FaHeart
-                      className={`w-4 h-4 sm:w-5 sm:h-5 ${
-                        wishlist.some((item) => item._id === book._id)
+                      className={`w-4 h-4 sm:w-5 sm:h-5 ${wishlist.some((item) => item._id === book._id)
                           ? 'text-red-600'
                           : 'text-gray-400'
-                      }`}
+                        }`}
                     />
                   </button>
 
                   {/* Cart Button */}
-                  <button
-                    onClick={(e) => {
-                      e.preventDefault();
-                      addToCart(book);
-                    }}
-                    className="absolute top-2 right-2 bg-blue-600 hover:bg-black p-2 rounded-full shadow-md cursor-pointer transition"
-                    title="Add to Cart"
-                  >
-                    <FaCartShopping className="w-4 h-4 sm:w-5 sm:h-5 text-white" />
-                  </button>
+                  <div className="absolute top-2 right-2 bg-white p-1 rounded-full shadow-md">
+                    {cart.some((item) => item._id === book._id) ? (
+                      <div className="flex items-center gap-1">
+                        <button
+                          onClick={(e) => {
+                            e.preventDefault();
+                            decrement(book._id);
+                          }}
+                          className="bg-red-500 hover:bg-red-700 text-white px-2 rounded"
+                          title="Decrease quantity"
+                        >
+                          -
+                        </button>
+                        <span className="text-sm font-semibold px-1">
+                          {cart.find((item) => item._id === book._id)?.quantity}
+                        </span>
+                        <button
+                          onClick={(e) => {
+                            e.preventDefault();
+                            increment(book._id);
+                          }}
+                          className="bg-green-500 hover:bg-green-700 text-white px-2 rounded"
+                          title="Increase quantity"
+                        >
+                          +
+                        </button>
+                      </div>
+                    ) : (
+                      <button
+                        onClick={(e) => {
+                          e.preventDefault();
+                          addToCart(book);
+                        }}
+                        className="bg-blue-600 hover:bg-black p-2 rounded-full transition"
+                        title="Add to Cart"
+                      >
+                        <FaCartShopping className="w-4 h-4 sm:w-5 sm:h-5 text-white" />
+                      </button>
+                    )}
+                  </div>
 
                   {/* Book Info */}
                   <div className="p-3 sm:p-4 text-center space-y-1">

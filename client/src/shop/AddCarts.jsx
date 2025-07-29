@@ -3,7 +3,7 @@ import { CartContext } from "../contexts/CartProvider";
 import { Link } from "react-router-dom";
 
 const AddCarts = () => {
-  const { cart, removeFromCart } = useContext(CartContext);
+  const { cart, removeFromCart, increment, decrement } = useContext(CartContext);
   const [removingId, setRemovingId] = useState(null);
 
   const handleRemove = (bookId) => {
@@ -26,9 +26,8 @@ const AddCarts = () => {
             {cart.map((book) => (
               <div
                 key={book._id}
-                className={`bg-white rounded-lg shadow-sm p-3 flex flex-col items-center transition-all duration-300 ${
-                  removingId === book._id ? "opacity-0 scale-90" : "opacity-100 scale-100"
-                }`}
+                className={`bg-white rounded-lg shadow-sm p-3 flex flex-col items-center transition-all duration-300 ${removingId === book._id ? "opacity-0 scale-90" : "opacity-100 scale-100"
+                  }`}
               >
                 <img
                   src={book.imageURL}
@@ -39,7 +38,27 @@ const AddCarts = () => {
                   {book.bookTitle}
                 </h3>
                 <p className="text-sm text-gray-600">by {book.authorName}</p>
-                <p className="text-blue-500 font-semibold mt-1">{book.price}</p>
+
+                <p className="text-blue-500 font-semibold mt-1">
+                  ₹{book.price} × {book.quantity} = ₹{book.price * book.quantity}
+                </p>
+
+                <div className="flex items-center justify-center gap-2 mt-2">
+                  <button
+                    onClick={() => decrement(book._id)}
+                    className="px-2 py-1 bg-gray-200 rounded hover:bg-gray-300"
+                  >
+                    -
+                  </button>
+                  <span className="text-sm font-medium">{book.quantity}</span>
+                  <button
+                    onClick={() => increment(book._id)}
+                    className="px-2 py-1 bg-gray-200 rounded hover:bg-gray-300"
+                  >
+                    +
+                  </button>
+                </div>
+
                 <div className="flex justify-between gap-2 mt-4">
                   <button
                     onClick={() => handleRemove(book._id)}

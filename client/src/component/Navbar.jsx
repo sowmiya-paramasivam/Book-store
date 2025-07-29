@@ -26,6 +26,7 @@ const Navbar = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  const totalQuantity = cart.reduce((sum, item) => sum + item.quantity, 0);
   // Navigation Items
   const navItems = [
     { Link: "Home", path: "/" },
@@ -38,7 +39,7 @@ const Navbar = () => {
   return (
     <header className="w-full fixed top-0 left-0 z-50">
       <div className="bg-blue-500 h-10 flex items-center overflow-hidden w-full relative">
-        <h3 className="absolute whitespace-nowrap text-white text-lg md:text-xl font-semibold animate-marquee tracking-wide bg-gradient-to-r from-white to-yellow-300 bg-clip-text text-transparent drop-shadow-md font-eduArrow">
+        <h3 className="absolute whitespace-nowrap text-white text-lg md:text-xl font-normal animate-marquee">
           Books are your own store served from another mind
         </h3>
       </div>
@@ -72,10 +73,10 @@ const Navbar = () => {
             {/* Cart */}
             <Link to="/addcart" className="relative">
               <FaCartShopping className="w-6 h-6 text-black hover:text-blue-700" />
-              {cart.length > 0 && (
-                <span className="absolute -top-2 -right-2 bg-red-500 text-white text-xs px-2 py-1 rounded-full">
-                  {cart.length}
-                </span>
+              {cart.reduce((total, item) => total + item.quantity, 0) > 0 && (
+             <span className="absolute -top-2 -right-2 bg-red-500 text-white text-xs px-2 py-1 rounded-full">
+              {cart.reduce((total, item) => total + item.quantity, 0)}
+             </span>
               )}
             </Link>
 
